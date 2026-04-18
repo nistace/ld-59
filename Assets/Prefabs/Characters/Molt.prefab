@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 733649502111171045}
   - component: {fileID: 2830747998653458524}
   m_Layer: 6
-  m_Name: Mole
+  m_Name: Molt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,6 +221,8 @@ MonoBehaviour:
   _collisionMask:
     serializedVersion: 2
     m_Bits: 449
+  _gizmoColor: {r: 0.76374185, g: 1, b: 0.21226418, a: 1}
+  _despawnData: {fileID: 11400000, guid: 818ec38093d657344a4ea72eaa119127, type: 2}
 --- !u!54 &2830747998653458524
 Rigidbody:
   m_ObjectHideFlags: 0

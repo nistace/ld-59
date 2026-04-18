@@ -1,7 +1,8 @@
 ﻿using Cysharp.Threading.Tasks;
 using LD59.ExtractMoles.Characters;
+using LD59.ExtractMoles.Interactables;
 using LD59.ExtractMoles.Signals;
-using System;
+using System.Linq;
 using UnityEngine;
 
 namespace LD59.ExtractMoles.Moles
@@ -47,8 +48,15 @@ namespace LD59.ExtractMoles.Moles
             return;
          }
 
-         if(_character.IsAboutToHitSomething( Speed ))
+         if(_character.IsAboutToHitSomething( Speed, out var colliders, out var hits ))
          {
+            var speedRatio = Speed / _maxSpeed;
+
+            foreach(var reactor in colliders.Take( hits ).SelectMany( t => t.GetComponentsInParent<IReactToMoleHeadBump>() ).Where( t => t.RequiredSpeedRatio <= speedRatio ))
+            {
+               reactor.React();
+            }
+
             HasToRun = false;
             Speed *= _knockedOutSpeed;
             KnockedOutCooldown = _knockedOutTime;

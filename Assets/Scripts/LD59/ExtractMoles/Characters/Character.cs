@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using Cysharp.Threading.Tasks;
+using LD59.ExtractMoles.Utilities;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace LD59.ExtractMoles.Characters
@@ -10,10 +13,17 @@ namespace LD59.ExtractMoles.Characters
 
       [SerializeField] private CapsuleCollider _collider;
       [SerializeField] private LayerMask _collisionMask = ~1;
+      [SerializeField] private Color _gizmoColor = Color.white;
+      [SerializeField] private SpawnWithScaleConfigurationData _despawnData;
 
-      public bool IsAboutToHitSomething( float speed )
+      public Color GizmoColor => _gizmoColor;
+
+      public bool IsAboutToHitSomething( float speed ) => IsAboutToHitSomething( speed, out _, out _ );
+
+      public bool IsAboutToHitSomething( float speed, out IReadOnlyList<Collider> colliders, out int hits )
       {
-         var hits = Physics.OverlapSphereNonAlloc( transform.position + Vector3.up * (_collider.height * .5f) + transform.forward * (speed * Time.deltaTime),
+         colliders = Colliders;
+         hits = Physics.OverlapSphereNonAlloc( transform.position + Vector3.up * (_collider.height * .5f) + transform.forward * (speed * Time.deltaTime),
             _collider.radius,
             Colliders,
             _collisionMask );
@@ -24,6 +34,18 @@ namespace LD59.ExtractMoles.Characters
          }
 
          return Colliders.Take( hits ).Any( hitCollider => !hitCollider.gameObject.transform.IsChildOf( transform ) );
+      }
+
+      public async UniTask Despawn()
+      {
+         foreach(var toNotify in GetComponentsInChildren<INotifiedOfCharacterDespawn>())
+         {
+            toNotify.OnDespawn();
+         }
+
+         await SpawnWithScale.Play( transform, _despawnData.Data );
+
+         Destroy( gameObject );
       }
    }
 }

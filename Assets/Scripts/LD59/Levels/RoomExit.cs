@@ -1,4 +1,5 @@
-﻿using LD59.ExtractMoles.Characters;
+﻿using Cysharp.Threading.Tasks;
+using LD59.ExtractMoles.Characters;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,6 +23,8 @@ namespace LD59.Levels
          {
             return;
          }
+
+         character.Despawn().Forget();
 
          if(ExitedMoles == _requiredMoles)
          {

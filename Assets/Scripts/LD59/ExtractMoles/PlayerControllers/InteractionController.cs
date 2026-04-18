@@ -1,4 +1,6 @@
-﻿using LD59.ExtractMoles.Interactables;
+﻿using LD59.ExtractMoles.Characters;
+using LD59.ExtractMoles.Interactables;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,8 +8,10 @@ using UnityEngine.InputSystem;
 
 namespace LD59.ExtractMoles.PlayerControllers
 {
-   public class InteractionController : MonoBehaviour
+   public class InteractionController : MonoBehaviour, INotifiedOfCharacterDespawn
    {
+      public static InteractionController Instance { get; private set; }
+
       [SerializeField] private float _interactForwardOffset = .1f;
       [SerializeField] private float _interactionRadius = .8f;
       [SerializeField] private InputActionReference _interactionAction;
@@ -18,6 +22,11 @@ namespace LD59.ExtractMoles.PlayerControllers
 
       public IInteractable CurrentInteractable => _currentInteractable;
       private UnityEvent<IInteractable> OnInteractableChanged { get; } = new();
+
+      private void Awake()
+      {
+         Instance = this;
+      }
 
       private void OnEnable()
       {
@@ -57,5 +66,7 @@ namespace LD59.ExtractMoles.PlayerControllers
 
          OnInteractableChanged.Invoke( _currentInteractable );
       }
+
+      public void OnDespawn() => enabled = false;
    }
 }

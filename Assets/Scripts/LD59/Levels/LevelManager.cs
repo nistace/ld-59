@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using LD59.ExtractMoles.Cameras;
+using LD59.ExtractMoles.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,9 @@ namespace LD59.Levels
       [SerializeField] private GameplayCamera _camera;
       [SerializeField] private Level[] _levels;
       [SerializeField] private int _firstLevelIndex;
-      [SerializeField] private float _fancySpawnableSpawnDuration = .5f;
+      [SerializeField] private SpawnWithScaleConfigurationData _spawnData;
+      [SerializeField] private SpawnWithScaleConfigurationData _despawnData;
       [SerializeField] private float _spawnDuration = 3;
-      [SerializeField] private AnimationCurve _spawnAnimationCurve;
 
       private Level CurrentLevel { get; set; }
       private int CurrentLevelIndex { get; set; }
@@ -32,6 +33,12 @@ namespace LD59.Levels
          {
             nextLevelSpawnPosition = CurrentLevel.NextLevelAnchorPosition;
             itemsToKeepBetweenLevels = CurrentLevel.ObjectsToKeepWithNextLevel;
+
+            foreach(var itemFromPreviousLevel in itemsToKeepBetweenLevels)
+            {
+               itemFromPreviousLevel.transform.SetParent( null );
+            }
+
             await Despawn();
             CurrentLevelIndex++;
             CurrentLevel.OnLevelEnded.RemoveListener( OnCurrentLevelEnded.Invoke );
@@ -50,10 +57,11 @@ namespace LD59.Levels
             .Except( CurrentLevel.ObjectsToKeepWithNextLevel )
             .OrderByDescending( t => t.Priority )
             .ThenBy( _ => Random.value )
-            .Select( t => new SpawningItem( t ) )
             .ToArray();
 
-         await AnimateSpawningAsync( spawnables, false );
+         await AnimateSpawningAsync( spawnables, _despawnData.Data );
+
+         Destroy( CurrentLevel.gameObject );
       }
 
       private async UniTask Spawn( int levelIndex, Vector3 position, IReadOnlyList<LevelFancySpawnable> itemFromPreviousLevel )
@@ -66,34 +74,36 @@ namespace LD59.Levels
 
          await UniTask.NextFrame();
 
+         var spawnables = CurrentLevel.GetComponentsInChildren<LevelFancySpawnable>().OrderBy( t => t.Priority ).ThenBy( _ => Random.value ).ToArray();
+
          foreach(var item in itemFromPreviousLevel)
          {
             item.transform.SetParent( CurrentLevel.transform );
          }
 
-         var spawnables = CurrentLevel.GetComponentsInChildren<LevelFancySpawnable>()
-            .OrderBy( t => t.Priority )
-            .ThenBy( _ => Random.value )
-            .Select( t => new SpawningItem( t ) )
-            .ToArray();
-
          foreach(var spawnable in spawnables)
          {
-            spawnable.Spawnable.transform.localScale = Vector3.zero;
+            spawnable.transform.localScale = Vector3.zero;
          }
 
          CurrentLevel.gameObject.SetActive( true );
 
-         await AnimateSpawningAsync( spawnables, true );
+         await AnimateSpawningAsync( spawnables, _spawnData.Data );
+
+         foreach(var moleSpawner in CurrentLevel.MoleSpawners)
+         {
+            await moleSpawner.SpawnAsync();
+         }
+
+         var player = await CurrentLevel.PlayerSpawner.SpawnAsync();
+         _camera.FollowCam = player.transform;
       }
 
-      private async UniTask AnimateSpawningAsync( SpawningItem[] _allSpawningItems, bool forward )
+      private async UniTask AnimateSpawningAsync( LevelFancySpawnable[] _allSpawningItems, SpawnWithScale.Data spawnData )
       {
-         List<SpawningItem> spawningItems = new();
+         List<UniTask> spawnTasks = new();
 
-         var spawnRoutine = AnimateItemsProgressAsync( spawningItems, forward );
-
-         var durationBetweenSpawnables = (_spawnDuration - _fancySpawnableSpawnDuration) / (_allSpawningItems.Length - 1);
+         var durationBetweenSpawnables = (_spawnDuration - spawnData.Speed) / (_allSpawningItems.Length - 1);
 
          var timeElapsed = 0f;
          var nextSpawnIndex = 0;
@@ -103,7 +113,8 @@ namespace LD59.Levels
 
             while(timeElapsed > 0 && nextSpawnIndex < _allSpawningItems.Length)
             {
-               spawningItems.Add( _allSpawningItems[ nextSpawnIndex ] );
+               spawnTasks.Add( SpawnWithScale.Play( _allSpawningItems[ nextSpawnIndex ].transform, spawnData ) );
+
                timeElapsed -= durationBetweenSpawnables;
                nextSpawnIndex++;
             }
@@ -112,42 +123,7 @@ namespace LD59.Levels
             timeElapsed += Time.deltaTime;
          }
 
-         await spawnRoutine;
-      }
-
-      private async UniTask AnimateItemsProgressAsync( List<SpawningItem> spawningItems, bool forward )
-      {
-         await UniTask.WaitWhile( () => spawningItems.Count == 0 );
-
-         while(spawningItems.Count > 0)
-         {
-            foreach(var spawningItem in spawningItems)
-            {
-               spawningItem.Progress += Time.deltaTime / _fancySpawnableSpawnDuration;
-
-               var animationTime = Mathf.Clamp01( forward ? spawningItem.Progress : 1 - spawningItem.Progress );
-
-               spawningItem.Spawnable.transform.localScale = Vector3.one * _spawnAnimationCurve.Evaluate( animationTime );
-            }
-
-            while(spawningItems.Count > 0 && spawningItems[ 0 ].Progress > 1)
-            {
-               spawningItems.RemoveAt( 0 );
-            }
-
-            await UniTask.NextFrame();
-         }
-      }
-
-      private class SpawningItem
-      {
-         public LevelFancySpawnable Spawnable { get; }
-         public float Progress { get; set; }
-
-         public SpawningItem( LevelFancySpawnable spawnable )
-         {
-            Spawnable = spawnable;
-         }
+         await UniTask.WhenAll( spawnTasks );
       }
    }
 }

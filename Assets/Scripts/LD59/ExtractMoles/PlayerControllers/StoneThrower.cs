@@ -1,12 +1,13 @@
 ﻿using Cysharp.Threading.Tasks;
+using LD59.ExtractMoles.Cameras;
+using LD59.ExtractMoles.Characters;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace LD59.ExtractMoles.PlayerControllers
 {
-   public class StoneThrower : MonoBehaviour
+   public class StoneThrower : MonoBehaviour, INotifiedOfCharacterDespawn
    {
-      [SerializeField] private Camera _camera;
       [SerializeField] private InputActionReference _cursorActionReference;
       [SerializeField] private InputActionReference _triggerActionReference;
       [SerializeField] private InputActionReference _activateMode;
@@ -15,6 +16,7 @@ namespace LD59.ExtractMoles.PlayerControllers
       [SerializeField] private Transform _stone;
       [SerializeField] private AnimationCurve _heightCurve;
       [SerializeField] private AnimationCurve _heightPerDistance;
+      [SerializeField] private LayerMask _stoneHitMask = ~0;
       [SerializeField] private float _stoneSpeed;
       [SerializeField] private LayerMask _stoneSoundsLayerMask = ~0;
       [SerializeField] private Collider[] _nonAllocColliders = new Collider[ 16 ];
@@ -43,8 +45,8 @@ namespace LD59.ExtractMoles.PlayerControllers
             return;
          }
 
-         var ray = _camera.ScreenPointToRay( _cursorActionReference.action.ReadValue<Vector2>() );
-         if(Physics.Raycast( ray, out var hit ))
+         var ray = GameplayCamera.Camera.ScreenPointToRay( _cursorActionReference.action.ReadValue<Vector2>() );
+         if(Physics.Raycast( ray, out var hit, _stoneHitMask ))
          {
             _radiusVisual.position = hit.point;
             _radiusVisual.gameObject.SetActive( true );
@@ -95,6 +97,13 @@ namespace LD59.ExtractMoles.PlayerControllers
          }
 
          IsThrowing = false;
+      }
+
+      public void OnDespawn()
+      {
+         enabled = false;
+         _stone.gameObject.SetActive( false );
+         _radiusVisual.gameObject.SetActive( false );
       }
    }
 }

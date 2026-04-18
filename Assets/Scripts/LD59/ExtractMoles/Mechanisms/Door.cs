@@ -18,8 +18,15 @@ namespace LD59.ExtractMoles.Mechanisms
 
       private void Start()
       {
-         _doorObject.localPosition = _linkedStateHolder &&  _linkedStateHolder.CurrentState == _openState ? _openLocalPosition : _closeLocalPosition;
-         _linkedStateHolder.OnStateChanged.AddListener( HandleStateChanged );
+         if(_linkedStateHolder)
+         {
+            _doorObject.localPosition = _linkedStateHolder.CurrentState == _openState ? _openLocalPosition : _closeLocalPosition;
+            _linkedStateHolder.OnStateChanged.AddListener( HandleStateChanged );
+         }
+         else
+         {
+            _doorObject.localPosition = _closeLocalPosition;
+         }
       }
 
       private void HandleStateChanged( State newState )

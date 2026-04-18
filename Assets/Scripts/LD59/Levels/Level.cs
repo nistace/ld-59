@@ -1,4 +1,4 @@
-﻿using System;
+﻿using LD59.ExtractMoles.Characters;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,10 +12,15 @@ namespace LD59.Levels
       [SerializeField] private RoomExit _roomExit;
       [SerializeField] private Transform _nextLevelAnchor;
       [SerializeField] private LevelFancySpawnable[] _objectsToKeepWithNextLevel;
+      [SerializeField] private CharacterSpawner[] _moleSpawners;
+      [SerializeField] private CharacterSpawner _playerSpawner;
 
       public Vector3 NextLevelAnchorPosition => _nextLevelAnchor.position;
       public IReadOnlyList<LevelFancySpawnable> ObjectsToKeepWithNextLevel => _objectsToKeepWithNextLevel;
       public Transform CenterOfTheRoom => _centerOfRoom;
+
+      public CharacterSpawner[] MoleSpawners => _moleSpawners;
+      public CharacterSpawner PlayerSpawner => _playerSpawner;
 
       public UnityEvent OnLevelEnded => _roomExit.OnEveryoneLeftRoom;
 
@@ -28,16 +33,44 @@ namespace LD59.Levels
 
       private void OnDrawGizmos()
       {
-         Gizmos.color = Color.blue;
-         Gizmos.DrawSphere( _centerOfRoom.position, 0.1f );
-         Gizmos.color = Color.red;
-         Gizmos.DrawSphere( _nextLevelAnchor.position, 0.1f );
-         Gizmos.color = Color.yellow;
-         Gizmos.DrawCube( _roomExit.transform.position, Vector3.one * .5f );
+         if(_centerOfRoom)
+         {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere( _centerOfRoom.position, 0.1f );
+         }
+
+         if(_nextLevelAnchor)
+         {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere( _nextLevelAnchor.position, 0.1f );
+         }
+
+         if(_roomExit)
+         {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawCube( _roomExit.transform.position, Vector3.one * .5f );
+         }
+
          Gizmos.color = Color.magenta;
          foreach(var keptObject in _objectsToKeepWithNextLevel)
          {
             Gizmos.DrawCube( keptObject.transform.position + Vector3.up, Vector3.one * .5f );
+         }
+
+         foreach(var moleSpawner in _moleSpawners)
+         {
+            Gizmos.color = moleSpawner.GizmoColor;
+            Gizmos.matrix = moleSpawner.transform.localToWorldMatrix;
+            Gizmos.DrawCube( Vector3.zero, Vector3.one * .2f );
+            Gizmos.DrawCube( Vector3.zero + Vector3.forward * .3f, Vector3.one * .1f );
+         }
+
+         if(_playerSpawner)
+         {
+            Gizmos.color = _playerSpawner.GizmoColor;
+            Gizmos.matrix = _playerSpawner.transform.localToWorldMatrix;
+            Gizmos.DrawCube( Vector3.zero, Vector3.one * .2f );
+            Gizmos.DrawCube( Vector3.zero + Vector3.forward * .3f, Vector3.one * .1f );
          }
       }
    }

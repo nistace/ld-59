@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace LD59.ExtractMoles.Cameras
 {
    public class GameplayCamera : MonoBehaviour
    {
+      public static Camera Camera { get; private set; }
+
+      [SerializeField] private Camera _camera;
       [SerializeField] private Transform _centerOfTheRoom;
       [SerializeField] private Transform _followCam;
       [SerializeField] private float _smoothness = .2f;
@@ -14,6 +18,17 @@ namespace LD59.ExtractMoles.Cameras
       {
          get => _centerOfTheRoom;
          set => _centerOfTheRoom = value;
+      }
+
+      public Transform FollowCam
+      {
+         get => _followCam;
+         set => _followCam = value;
+      }
+
+      private void Awake()
+      {
+         Camera = _camera;
       }
 
       private void Update()

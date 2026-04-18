@@ -6,7 +6,6 @@ namespace LD59.ExtractMoles.UI
    public class InteractionUI : MonoBehaviour
    {
       [SerializeField] private Camera _camera;
-      [SerializeField] private InteractionController _interactionController;
       [SerializeField] private CanvasGroup _canvasGroup;
       [SerializeField] private float _fadeSpeed = 4;
 
@@ -17,12 +16,14 @@ namespace LD59.ExtractMoles.UI
 
       private void Update()
       {
-         _canvasGroup.alpha = Mathf.MoveTowards( _canvasGroup.alpha, _interactionController.CurrentInteractable == null ? 0 : 1, Time.deltaTime * _fadeSpeed );
-
-         if(_interactionController.CurrentInteractable != null)
+         if(InteractionController.Instance == null || InteractionController.Instance.CurrentInteractable == null)
          {
-            transform.position = _camera.WorldToScreenPoint( _interactionController.CurrentInteractable.UIOverlayAnchorPoint );
+            _canvasGroup.alpha = Mathf.MoveTowards( _canvasGroup.alpha, 0, Time.deltaTime * _fadeSpeed );
+            return;
          }
+
+         _canvasGroup.alpha = Mathf.MoveTowards( _canvasGroup.alpha, 1, Time.deltaTime * _fadeSpeed );
+         transform.position = _camera.WorldToScreenPoint( InteractionController.Instance.CurrentInteractable.UIOverlayAnchorPoint );
       }
    }
 }

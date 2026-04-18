@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using LD59.Levels;
+using UnityEditor;
 using UnityEngine;
 
 namespace LD59.ExtractMoles.Environment
@@ -10,6 +11,7 @@ namespace LD59.ExtractMoles.Environment
       [SerializeField] private int _depth = 8;
       [SerializeField] private GameObject _wallPrefab;
       [SerializeField] private GameObject _floorPrefab;
+      [SerializeField] private RoomExit _roomExitPrefab;
 
       [ContextMenu( "Build" )]
       private void Build()
@@ -49,14 +51,15 @@ namespace LD59.ExtractMoles.Environment
          floorCollider.transform.SetParent( newRoom.transform );
 
          var centerOfTheRoom = new GameObject( "CenterOfTheRoom" ).transform;
-         centerOfTheRoom.position = new Vector3( _width * .5f, -.1f, _depth * .5f );
+         centerOfTheRoom.position = new Vector3( _width * .5f, 0, _depth * .5f );
          centerOfTheRoom.transform.SetParent( newRoom.transform );
 
-         var roomExit = new GameObject( "RoomExit" ).AddComponent<BoxCollider>();
-         roomExit.center = new Vector3( 0, .5f, 0 );
-         roomExit.size = new Vector3( 1, 1, 1 );
+         var nextLevelAnchor = new GameObject( "NextLevelAnchor" ).transform;
+         nextLevelAnchor.position = new Vector3( _width * .5f, 0, _depth * .5f );
+         nextLevelAnchor.transform.SetParent( newRoom.transform );
+
+         var roomExit = ((GameObject)PrefabUtility.InstantiatePrefab( _roomExitPrefab, staticRoom )).GetComponent<RoomExit>();
          roomExit.gameObject.layer = LayerMask.NameToLayer( "RoomExit" );
-         roomExit.isTrigger = true;
          roomExit.transform.SetParent( newRoom.transform );
          roomExit.transform.position = new Vector3( _width + 1.5f, 0, .5f );
       }
