@@ -1,6 +1,6 @@
-﻿using LD59.ExtractMoles.Characters;
+﻿using Cysharp.Threading.Tasks;
+using LD59.ExtractMoles.Characters;
 using LD59.ExtractMoles.Interactables;
-using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,17 +8,18 @@ using UnityEngine.InputSystem;
 
 namespace LD59.ExtractMoles.PlayerControllers
 {
-   public class InteractionController : MonoBehaviour, INotifiedOfCharacterDespawn
+   public class InteractionController : MonoBehaviour, INotifiedOfCharacterDespawn, ILadderInteractor
    {
       public static InteractionController Instance { get; private set; }
 
-      [SerializeField] private float _interactForwardOffset = .1f;
-      [SerializeField] private float _interactionRadius = .8f;
+      [SerializeField] private PlayerInfo _playerInfo;
       [SerializeField] private InputActionReference _interactionAction;
       [SerializeField] private Collider[] _interactableColliders;
       [SerializeField] private LayerMask _interactableLayerMask;
 
       private IInteractable _currentInteractable;
+      public float ClimbSpeed => _playerInfo.Config.Movement.ClimbSpeed;
+      public float MovementSpeed => _playerInfo.Config.Movement.MovementSpeed;
 
       public IInteractable CurrentInteractable => _currentInteractable;
       private UnityEvent<IInteractable> OnInteractableChanged { get; } = new();
@@ -40,7 +41,17 @@ namespace LD59.ExtractMoles.PlayerControllers
 
       private void HandleInteractionPerformed( InputAction.CallbackContext context )
       {
-         _currentInteractable?.Interact();
+         DoInteractionAsync().Forget();
+      }
+
+      private async UniTask DoInteractionAsync()
+      {
+         if(_playerInfo.LockedByInteraction) return;
+         if(_currentInteractable == null) return;
+
+         _playerInfo.LockedByInteraction = true;
+         await _currentInteractable.Interact( transform );
+         _playerInfo.LockedByInteraction = false;
       }
 
       private void Update()
@@ -50,9 +61,20 @@ namespace LD59.ExtractMoles.PlayerControllers
 
       private void RefreshTargetInteractable()
       {
-         var interactPosition = transform.position + transform.forward * _interactForwardOffset;
+         if(_playerInfo.LockedByInteraction)
+         {
+            if(_currentInteractable != null)
+            {
+               _currentInteractable = null;
+               OnInteractableChanged.Invoke( _currentInteractable );
+            }
 
-         var collisions = Physics.OverlapSphereNonAlloc( interactPosition, _interactionRadius, _interactableColliders, _interactableLayerMask );
+            return;
+         }
+
+         var interactPosition = transform.position + transform.forward * _playerInfo.Config.Interactions.InteractForwardOffset;
+
+         var collisions = Physics.OverlapSphereNonAlloc( interactPosition, _playerInfo.Config.Interactions.InteractionRadius, _interactableColliders, _interactableLayerMask );
 
          var newInteractable = _interactableColliders.Take( collisions )
             .Select( t => t.GetComponentInParent<IInteractable>() )

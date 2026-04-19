@@ -15,8 +15,12 @@ namespace LD59.ExtractMoles.Characters
       [SerializeField] private LayerMask _collisionMask = ~1;
       [SerializeField] private Color _gizmoColor = Color.white;
       [SerializeField] private SpawnWithScaleConfigurationData _despawnData;
+      [SerializeField] private GroundDetector _groundDetector;
+      [SerializeField] private float _maxFallSpeed = 5;
 
+      private float _verticalSpeed;
       public Color GizmoColor => _gizmoColor;
+      public bool Grounded => _groundDetector.Grounded;
 
       public bool IsAboutToHitSomething( float speed ) => IsAboutToHitSomething( speed, out _, out _ );
 
@@ -26,7 +30,8 @@ namespace LD59.ExtractMoles.Characters
          hits = Physics.OverlapSphereNonAlloc( transform.position + Vector3.up * (_collider.height * .5f) + transform.forward * (speed * Time.deltaTime),
             _collider.radius,
             Colliders,
-            _collisionMask );
+            _collisionMask,
+            QueryTriggerInteraction.Ignore );
 
          if((_collisionMask.value & (1 << transform.gameObject.layer)) == 0)
          {
@@ -46,6 +51,20 @@ namespace LD59.ExtractMoles.Characters
          await SpawnWithScale.Play( transform, _despawnData.Data );
 
          Destroy( gameObject );
+      }
+
+      public void UpdateGravity()
+      {
+         if(Grounded)
+         {
+            _verticalSpeed = 0;
+         }
+         else
+         {
+            _verticalSpeed = Mathf.Max( _verticalSpeed + Physics.gravity.y * Time.deltaTime, -_maxFallSpeed );
+
+            transform.position += transform.up * (_verticalSpeed * Time.deltaTime);
+         }
       }
    }
 }

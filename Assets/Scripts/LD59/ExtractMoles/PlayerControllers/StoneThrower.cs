@@ -8,19 +8,17 @@ namespace LD59.ExtractMoles.PlayerControllers
 {
    public class StoneThrower : MonoBehaviour, INotifiedOfCharacterDespawn
    {
+      [SerializeField] private PlayerInfo _playerInfo;
       [SerializeField] private InputActionReference _cursorActionReference;
       [SerializeField] private InputActionReference _triggerActionReference;
       [SerializeField] private InputActionReference _activateMode;
-      [SerializeField] private float _radius;
       [SerializeField] private Transform _radiusVisual;
       [SerializeField] private Transform _stone;
       [SerializeField] private AnimationCurve _heightCurve;
       [SerializeField] private AnimationCurve _heightPerDistance;
-      [SerializeField] private LayerMask _stoneHitMask = ~0;
-      [SerializeField] private float _stoneSpeed;
-      [SerializeField] private LayerMask _stoneSoundsLayerMask = ~0;
       [SerializeField] private Collider[] _nonAllocColliders = new Collider[ 16 ];
 
+      private PlayerConfig.StoneThrowingData Config => _playerInfo.Config.StoneThrowing;
       private bool IsThrowing { get; set; }
 
       private void OnDisable()
@@ -31,22 +29,25 @@ namespace LD59.ExtractMoles.PlayerControllers
          }
       }
 
+      private bool IsInteractionAllowed()
+      {
+         if(_playerInfo.LockedByInteraction) return false;
+         if(IsThrowing) return false;
+         if(_activateMode != null && !_activateMode.action.IsPressed()) return false;
+
+         return true;
+      }
+
       private void Update()
       {
-         if(IsThrowing)
-         {
-            _radiusVisual.gameObject.SetActive( false );
-            return;
-         }
-
-         if(_activateMode != null && !_activateMode.action.IsPressed())
+         if(!IsInteractionAllowed())
          {
             _radiusVisual.gameObject.SetActive( false );
             return;
          }
 
          var ray = GameplayCamera.Camera.ScreenPointToRay( _cursorActionReference.action.ReadValue<Vector2>() );
-         if(Physics.Raycast( ray, out var hit, _stoneHitMask ))
+         if(Physics.Raycast( ray, out var hit, 50, Config.StoneHitMask ))
          {
             _radiusVisual.position = hit.point;
             _radiusVisual.gameObject.SetActive( true );
@@ -77,14 +78,14 @@ namespace LD59.ExtractMoles.PlayerControllers
          {
             _stone.position = Vector3.Lerp( origin, targetPoint, progress ) + Vector3.up * (_heightCurve.Evaluate( progress ) * maxHeight);
 
-            progress += (Time.deltaTime * _stoneSpeed) / distance;
+            progress += (Time.deltaTime * Config.StoneSpeed) / distance;
 
             await UniTask.NextFrame();
          }
 
          _stone.gameObject.SetActive( false );
 
-         var hits = Physics.OverlapSphereNonAlloc( targetPoint, _radius, _nonAllocColliders, _stoneSoundsLayerMask );
+         var hits = Physics.OverlapSphereNonAlloc( targetPoint, Config.StoneNoiseRadius, _nonAllocColliders, Config.StoneSoundsLayerMask );
 
          if(hits == _nonAllocColliders.Length)
          {

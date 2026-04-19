@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 
 namespace LD59.ExtractMoles.Interactables
@@ -11,7 +12,13 @@ namespace LD59.ExtractMoles.Interactables
       [SerializeField] private StateHolder _stateHolder;
       [SerializeField] private State[] _states;
 
-      public void Interact() => _stateHolder.ChangeState( _states[ (Array.IndexOf( _states, _stateHolder.CurrentState ) + 1) % _states.Length ] );
+      public UniTask Interact( Transform interactor )
+      {
+         _stateHolder.ChangeState( _states[ (Array.IndexOf( _states, _stateHolder.CurrentState ) + 1) % _states.Length ] );
+
+         return UniTask.CompletedTask;
+      }
+
       public Vector3 InteractionPoint => _interactionPoint.position;
       public Vector3 UIOverlayAnchorPoint => _uiOverlayAnchorPoint.position;
    }

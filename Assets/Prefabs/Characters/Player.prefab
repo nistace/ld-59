@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 6733311007554321246}
   - component: {fileID: 982005308883691330}
   - component: {fileID: 8222123085596907060}
+  - component: {fileID: 4560533042801820330}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -527,6 +528,7 @@ Transform:
   - {fileID: 5727503189451303267}
   - {fileID: 3914565111046575416}
   - {fileID: 3468804179449674225}
+  - {fileID: 7810095766587736888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 118.501, z: 0}
 --- !u!114 &2758786637107638699
@@ -541,10 +543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d256671ced34849810217626798519e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.PlayerController
+  _playerInfo: {fileID: 4560533042801820330}
   _character: {fileID: 6733311007554321246}
   _movementActionReference: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  _speed: 3
-  _smoothDirection: 0.05
 --- !u!114 &3941067700560311144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,10 +558,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869160481b4440ab211927dcf5c31e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.PlayerControllers.PlayerStoneThrower
+  _playerInfo: {fileID: 4560533042801820330}
   _cursorActionReference: {fileID: -2311597437997013916, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _triggerActionReference: {fileID: -2005157067152870069, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _activateMode: {fileID: -8095682409447902853, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  _radius: 3
   _radiusVisual: {fileID: 3468804179449674225}
   _stone: {fileID: 3914565111046575416}
   _heightCurve:
@@ -620,13 +621,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _stoneHitMask:
-    serializedVersion: 2
-    m_Bits: 129
-  _stoneSpeed: 5
-  _stoneSoundsLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   _nonAllocColliders:
   - {fileID: 0}
   - {fileID: 0}
@@ -656,6 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e890a47af6f746f0bc13b34532f73df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.PlayerControllers.SignalEmitter
+  _playerInfo: {fileID: 4560533042801820330}
   _emitSignalActionReference: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &8585752629005412345
 MonoBehaviour:
@@ -669,8 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8818d85d204465fab6aa3de4262c0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.PlayerControllers.InteractionController
-  _interactForwardOffset: 0.1
-  _interactionRadius: 0.8
+  _playerInfo: {fileID: 4560533042801820330}
   _interactionAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _interactableColliders:
   - {fileID: 0}
@@ -700,6 +694,7 @@ MonoBehaviour:
     m_Bits: 1473
   _gizmoColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
   _despawnData: {fileID: 11400000, guid: 818ec38093d657344a4ea72eaa119127, type: 2}
+  _groundDetector: {fileID: 8998362940177995648}
 --- !u!136 &982005308883691330
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -750,6 +745,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4560533042801820330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748835995278348767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb15e32fccb4b2eaf2e6449a7d557e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.PlayerControllers.PlayerInfo
+  _playerConfig: {fileID: 11400000, guid: f77b656301ef22241b7a517d2a73b358, type: 2}
 --- !u!1 &6854038517696375338
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,6 +946,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3672579770625338019, guid: 331d91033f490a24083018dfe76aec3b, type: 3}
   m_PrefabInstance: {fileID: 203845959989613394}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1831245068343673525
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6341263093956208799}
+    m_Modifications:
+    - target: {fileID: 5541947419564685482, guid: 2a51223fb0b05994a8093be0d810dd1d, type: 3}
+      propertyPath: m_Name
+      value: GroundDetector
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433811739013874061, guid: 2a51223fb0b05994a8093be0d810dd1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433811739013874061, guid: 2a51223fb0b05994a8093be0d810dd1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433811739013874061, guid: 2a51223fb0b05994a8093be0d810dd1d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a51223fb0b05994a8093be0d810dd1d, type: 3}
+--- !u!4 &7810095766587736888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8433811739013874061, guid: 2a51223fb0b05994a8093be0d810dd1d, type: 3}
+  m_PrefabInstance: {fileID: 1831245068343673525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8998362940177995648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7316511856105280821, guid: 2a51223fb0b05994a8093be0d810dd1d, type: 3}
+  m_PrefabInstance: {fileID: 1831245068343673525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df4df13c463c44e182db7970be67dc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Characters.GroundDetector
 --- !u!1001 &4743487255383923510
 PrefabInstance:
   m_ObjectHideFlags: 0

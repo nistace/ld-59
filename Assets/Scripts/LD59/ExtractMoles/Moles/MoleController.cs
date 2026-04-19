@@ -41,7 +41,9 @@ namespace LD59.ExtractMoles.Moles
             KnockedOutCooldown -= Time.deltaTime;
          }
 
-         Speed = Mathf.MoveTowards( Speed, HasToRun ? _maxSpeed : 0, (HasToRun ? _acceleration : _deceleration) * Time.deltaTime );
+         _character.UpdateGravity();
+
+         Speed = Mathf.MoveTowards( Speed, HasToRun ? _maxSpeed : 0, (HasToRun && _character.Grounded ? _acceleration : _deceleration) * Time.deltaTime );
 
          if(Mathf.Approximately( Speed, 0 ))
          {

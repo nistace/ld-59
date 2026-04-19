@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5227523849946290456}
-  - component: {fileID: 4875847152748733363}
-  - component: {fileID: 8756556021702539775}
   - component: {fileID: 8612074771289274752}
+  - component: {fileID: 8822464399445596018}
+  - component: {fileID: 8225674824376853341}
   m_Layer: 7
-  m_Name: Button
+  m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,37 +37,6 @@ Transform:
   - {fileID: 3632884856972369256}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -141.596, z: 0}
---- !u!114 &4875847152748733363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3983964200761745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f59b5e49388440a68d0f8f74ab2e5fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Interactables.StateHolder
-  _currentState: {fileID: 11400000, guid: 86298e931d07d3644a59616f089e6034, type: 2}
---- !u!114 &8756556021702539775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3983964200761745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29f655c506f34b3492f514b81c9ee7e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Interactables.Button
-  _interactionPoint: {fileID: 3254619961781341873}
-  _uiOverlayAnchorPoint: {fileID: 3632884856972369256}
-  _stateHolder: {fileID: 4875847152748733363}
-  _states:
-  - {fileID: 11400000, guid: b06fdec0926fbde45acf3bbadbea6c1a, type: 2}
-  - {fileID: 11400000, guid: 86298e931d07d3644a59616f089e6034, type: 2}
 --- !u!114 &8612074771289274752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +50,101 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
   _priority: 50
+--- !u!114 &8822464399445596018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983964200761745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbbcac76aba4b7b9eb53f4b53cdb3c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Interactables.Ladder
+  _interactionPoint: {fileID: 3254619961781341873}
+  _uiOverlayAnchorPoint: {fileID: 3632884856972369256}
+  _splineContainer: {fileID: 8225674824376853341}
+--- !u!114 &8225674824376853341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983964200761745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Splines::UnityEngine.Splines.SplineContainer
+  m_Spline:
+    m_EditModeType: 1
+    m_Knots: []
+    m_MetaData: []
+    m_Closed: 0
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Splines:
+  - m_EditModeType: 1
+    m_Knots:
+    - Position:
+        x: 0
+        y: 0
+        z: -1.2
+      TangentIn:
+        x: 0
+        y: 0
+        z: -1
+      TangentOut:
+        x: 0
+        y: 0
+        z: 1
+      Rotation:
+        value:
+          x: 0
+          y: 0
+          z: 0
+          w: 1
+    - Position:
+        x: 0
+        y: 1
+        z: -0.1
+      TangentIn:
+        x: 0
+        y: 0
+        z: -1.2715752
+      TangentOut:
+        x: 0
+        y: 0
+        z: 1.2715752
+      Rotation:
+        value:
+          x: 0.17364818
+          y: 0
+          z: 0
+          w: 0.9848078
+    m_MetaData:
+    - Mode: 2
+      Tension: 0.5
+    - Mode: 2
+      Tension: 0.5
+    m_Closed: 0
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Knots:
+    m_KnotsLink: []
 --- !u!1 &3003936927284081542
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,13 +172,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3003936927284081542}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5227523849946290456}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &2015679248378941282
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -122,7 +186,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3003936927284081542}
-  m_Mesh: {fileID: -5447036705194824928, guid: 0f8738b4d4a90d84b8a2e4544618bf61, type: 3}
+  m_Mesh: {fileID: -4411361228764603502, guid: 0f8738b4d4a90d84b8a2e4544618bf61, type: 3}
 --- !u!23 &2239596265668461612
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -191,8 +255,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.16721137, y: 0.59547627, z: 0.16721137}
-  m_Center: {x: 0, y: 0.29890352, z: -0.0009083899}
+  m_Size: {x: 0.5, y: 1, z: 0.16}
+  m_Center: {x: 0, y: 0.5, z: 0.5730986}
 --- !u!1 &6461602020852691258
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +282,7 @@ Transform:
   m_GameObject: {fileID: 6461602020852691258}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: -0, y: 2, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -249,7 +313,7 @@ Transform:
   m_GameObject: {fileID: 6724667795094875820}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
