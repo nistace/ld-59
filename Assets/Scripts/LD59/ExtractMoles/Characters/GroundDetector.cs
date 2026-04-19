@@ -14,7 +14,7 @@ namespace LD59.ExtractMoles.Characters
 
       private void Update()
       {
-         if(Physics.Raycast( new Ray( transform.TransformPoint( _localOrigin ), Vector3.down ), out var hit, Mathf.Infinity, _groundMask ))
+         if(Physics.Raycast( new Ray( transform.TransformPoint( _localOrigin ), Vector3.down ), out var hit, Mathf.Infinity, _groundMask, QueryTriggerInteraction.Ignore ))
          {
             GroundWorldY = hit.point.y;
          }

@@ -145,6 +145,9 @@ MonoBehaviour:
   _spawnBeforeIntroCutscene: 1
   _introScript: {fileID: 11400000, guid: 5c2bec7dc5574bc4cb1e9a748796fbf1, type: 2}
   _activeActionsAfterCutscene: -1
+  _levelStarted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4461261064302417657
 GameObject:
   m_ObjectHideFlags: 0

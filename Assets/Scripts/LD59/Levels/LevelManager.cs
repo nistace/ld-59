@@ -32,6 +32,7 @@ namespace LD59.Levels
       private Level NextLevel { get; set; }
       private List<LevelFancySpawnable> ItemsFromPreviousLevel { get; } = new();
       private int CurrentLevelIndex { get; set; }
+      private int NextLevelIndex { get; set; }
 
       public UnityEvent OnCurrentLevelEnded { get; } = new();
 
@@ -47,16 +48,30 @@ namespace LD59.Levels
 
       public Level InstantiateNextLevel()
       {
-         NextLevel = Instantiate( _levels[ CurrentLevelIndex + 1 ], CurrentLevel.NextLevelAnchorPosition, Quaternion.identity );
+         NextLevelIndex = CurrentLevelIndex + 1;
+         NextLevel = Instantiate( _levels[ NextLevelIndex ], CurrentLevel.NextLevelAnchorPosition, Quaternion.identity );
          NextLevel.gameObject.SetActive( false );
 
          return NextLevel;
       }
 
+      public Level InstantiateCurrentLevelAsNext()
+      {
+         NextLevelIndex = CurrentLevelIndex;
+         NextLevel = Instantiate( _levels[ NextLevelIndex ], CurrentLevel.transform.position, Quaternion.identity );
+         NextLevel.gameObject.SetActive( false );
+
+         return NextLevel;
+      }
+
+      public void SaveItemsToKeepBeforeNextLevel()
+      {
+         ItemsFromPreviousLevel.Clear();
+         ItemsFromPreviousLevel.AddRange( CurrentLevel.ObjectsToKeepWithNextLevel );
+      }
+
       public async UniTask DespawnCurrentLevel()
       {
-         ItemsFromPreviousLevel.AddRange( CurrentLevel.ObjectsToKeepWithNextLevel );
-
          foreach(var itemToNotify in ItemsFromPreviousLevel.SelectMany( t => t.GetComponentsInChildren<ILevelKeptItem>() ))
          {
             itemToNotify.NotifyItemKept();
@@ -83,7 +98,7 @@ namespace LD59.Levels
 
       public void MoveNextLevelToCurrent()
       {
-         CurrentLevelIndex++;
+         CurrentLevelIndex = NextLevelIndex;
          CurrentLevel = NextLevel;
          NextLevel = null;
          CurrentLevelState = LevelState.ReadyToSpawn;

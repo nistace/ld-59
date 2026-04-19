@@ -2261,7 +2261,7 @@ PrefabInstance:
     - target: {fileID: 4344340511361350643, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1774472468504376274, guid: 00274b501c6225f408ac40ef903c7c3a, type: 3}
+      objectReference: {fileID: 1774472468504376274, guid: 0f8738b4d4a90d84b8a2e4544618bf61, type: 3}
     - target: {fileID: 8174507047718621893, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
       propertyPath: _priority
       value: 5
@@ -2305,7 +2305,7 @@ MonoBehaviour:
   _interactionPoint: {fileID: 6559295641756816310}
   _uiOverlayAnchorPoint: {fileID: 2814141957201224327}
   _meshFilter: {fileID: 1143017467072704312}
-  _collapsedMesh: {fileID: -5054852959701110410, guid: 00274b501c6225f408ac40ef903c7c3a, type: 3}
+  _collapsedMesh: {fileID: -5054852959701110410, guid: 0f8738b4d4a90d84b8a2e4544618bf61, type: 3}
   _onCompleted:
     m_PersistentCalls:
       m_Calls:
@@ -2481,10 +2481,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 584015365085702879, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.261
-      objectReference: {fileID: 0}
     - target: {fileID: 652599066500740030, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

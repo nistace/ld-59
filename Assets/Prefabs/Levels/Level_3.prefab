@@ -5635,7 +5635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1409268559174978853, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 1.343
       objectReference: {fileID: 0}
     - target: {fileID: 1409268559174978853, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11821,9 +11821,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1216641213627836609, guid: 7b4e489f468bfa64ba39ed543cc632c5, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 2719840449850328329, guid: 7b4e489f468bfa64ba39ed543cc632c5, type: 3}
       propertyPath: m_Name
       value: Grinder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023510350182428407, guid: 7b4e489f468bfa64ba39ed543cc632c5, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

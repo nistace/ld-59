@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using LD59.ExtractMoles.Characters;
 using LD59.ExtractMoles.Cutscenes;
 using LD59.ExtractMoles.PlayerControllers;
 using LD59.Levels;
@@ -17,10 +18,11 @@ namespace LD59
          _levelManager.OnCurrentLevelEnded.AddListener( HandleCurrentLevelEnded );
          _cutsceneManager.OnActionRequired.AddListener( HandleCutsceneActionRequired );
          CutsceneRequests.OnRequestReceived.AddListener( HandleCutsceneRequested );
+         CharacterEvents.OnCharacterDied.AddListener( HandleCharacterDied );
 
          _levelManager.InstantiateFirstLevel();
 
-         StartLevelAsync().Forget();
+         StartLevelAsync( true ).Forget();
       }
 
       private void HandleCutsceneRequested( ICutsceneRequester requester ) => HandleCutsceneRequestAsync( requester ).Forget();
@@ -42,7 +44,24 @@ namespace LD59
          requester.OnCutsceneEnded();
       }
 
-      private async UniTask StartLevelAsync()
+      private void HandleCharacterDied() => RestartLevelAsync().Forget();
+
+      private async UniTask RestartLevelAsync()
+      {
+         _levelManager.InstantiateCurrentLevelAsNext();
+
+         foreach(var character in FindObjectsByType<Character>( FindObjectsInactive.Exclude, FindObjectsSortMode.None ))
+         {
+            await character.Despawn();
+         }
+
+         await _levelManager.DespawnCurrentLevel();
+         _levelManager.MoveNextLevelToCurrent();
+
+         await StartLevelAsync( false );
+      }
+
+      private async UniTask StartLevelAsync( bool withCutscenes )
       {
          if(!_levelManager.CurrentLevel)
          {
@@ -55,7 +74,7 @@ namespace LD59
             await _levelManager.SpawnCurrentLevel();
          }
 
-         if(_levelManager.CurrentLevel.IntroScript)
+         if(withCutscenes && _levelManager.CurrentLevel.IntroScript)
          {
             await _cutsceneManager.PlayCutscene( _levelManager.CurrentLevel.IntroScript );
          }
@@ -88,6 +107,7 @@ namespace LD59
 
          if(_levelManager.CurrentLevelState != LevelManager.LevelState.Despawned)
          {
+            _levelManager.SaveItemsToKeepBeforeNextLevel();
             await _levelManager.DespawnCurrentLevel();
          }
 
@@ -95,7 +115,7 @@ namespace LD59
          {
             _levelManager.MoveNextLevelToCurrent();
 
-            await StartLevelAsync();
+            await StartLevelAsync( true );
          }
          else
          {
