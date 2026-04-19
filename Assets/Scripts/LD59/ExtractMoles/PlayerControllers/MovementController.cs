@@ -11,7 +11,7 @@ namespace LD59.ExtractMoles.PlayerControllers
       [SerializeField] private Character _character;
       [SerializeField] private InputActionReference _movementActionReference;
 
-      private Vector2 _movement;
+      public Vector2 Movement { get; private set; }
       private Vector2 _movementSmoothness;
       private bool _keepMovementGoing;
 
@@ -19,26 +19,28 @@ namespace LD59.ExtractMoles.PlayerControllers
 
       private void Update()
       {
-         if(_playerInfo.LockedByInteraction) return;
-
          if(_keepMovementGoing)
          {
-            transform.position += new Vector3( _movement.x, 0, _movement.y ) * (_movement.magnitude * Config.MovementSpeed * Time.deltaTime);
+            transform.position += new Vector3( Movement.x, 0, Movement.y ) * (Movement.magnitude * Config.MovementSpeed * Time.deltaTime);
             return;
          }
 
-         _character.UpdateGravity();
+         if(_playerInfo.LockedByInteraction) return;
 
-         _movement = Vector2.SmoothDamp( _movement, _movementActionReference.action.ReadValue<Vector2>(), ref _movementSmoothness, Config.SmoothForward );
+         if(!_playerInfo.Can( PlayerInfo.PlayerActions.Move )) return;
 
-         if(_movement != Vector2.zero)
+         _character.UpdateVerticalPosition();
+
+         Movement = Vector2.SmoothDamp( Movement, _movementActionReference.action.ReadValue<Vector2>(), ref _movementSmoothness, Config.SmoothForward );
+
+         if(Movement != Vector2.zero)
          {
-            transform.forward = new Vector3( _movement.x, 0, _movement.y );
+            transform.forward = new Vector3( Movement.x, 0, Movement.y );
          }
 
-         if(!_character.IsAboutToHitSomething( _movement.magnitude * Config.MovementSpeed ))
+         if(!_character.IsAboutToHitSomething( Movement.magnitude * Config.MovementSpeed ))
          {
-            transform.position += new Vector3( _movement.x, 0, _movement.y ) * (_movement.magnitude * Config.MovementSpeed * Time.deltaTime);
+            transform.position += new Vector3( Movement.x, 0, Movement.y ) * (Movement.magnitude * Config.MovementSpeed * Time.deltaTime);
          }
       }
 

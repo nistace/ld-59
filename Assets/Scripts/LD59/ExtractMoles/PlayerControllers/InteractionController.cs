@@ -61,6 +61,8 @@ namespace LD59.ExtractMoles.PlayerControllers
 
       private void RefreshTargetInteractable()
       {
+         if(!_playerInfo.Can( PlayerInfo.PlayerActions.Interact )) return;
+
          if(_playerInfo.LockedByInteraction)
          {
             if(_currentInteractable != null)

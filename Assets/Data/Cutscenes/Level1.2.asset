@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbf9a93e5c54b219dd12618afbe88c8, type: 3}
+  m_Name: Level1.2
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Cutscenes.CutsceneScript
+  _initialCharacterPositions:
+  - _character: 0
+    _characterPosition: 2
+    _await: 1
+  - _character: 1
+    _characterPosition: 3
+    _await: 1
+  - _character: 2
+    _characterPosition: 5
+    _await: 1
+  - _character: 3
+    _characterPosition: 5
+    _await: 1
+  _delayBefore: 0
+  _lines:
+  - _text: "Ouch\u2026 my head!"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 38bb89a76536a1a469e65b0998e9cc7d, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: What the hell?!
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 8d98432f298c8bc4988c803d4ef012e8, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: "I told you - straight line! You\u2019ll have to guide me properly."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: ddee1a1dcd9f3254abce82957510bf70, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: How was I supposed to know?
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 6e0c8468b9446e445981f96751c8edee, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: And the tunnel is not an option anymore, thank you very much.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: f971690645d5201468c4e771b518f3eb, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: Then we use the main entrance.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 0cea07af56ef54f41b67da876908cbe1, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "Grab some pebbles. My hearing is sharp - I\u2019ll turn toward where
+      you throw them."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.2
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 4a9d7fc4927cc004fb67d79a45b75a2f, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "My voice would\u2019ve been too simple, right?"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: ebc00f3ea0689154894626a0a3459213, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: I'm sorry... I just don't really like your voice.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 054e3fb1f16c846478e52b1acff2954c, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  _delayAfter: 0.1

@@ -46,7 +46,7 @@
                     "name": "Crouch",
                     "type": "Button",
                     "id": "27c5f898-bc57-4ee1-8800-db469aca5fe3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -109,6 +109,15 @@
                     "name": "ThrowStone",
                     "type": "Button",
                     "id": "c38d9352-373b-43f2-9311-d6a8b26fe13a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FastForwardCutscene",
+                    "type": "Button",
+                    "id": "4b1a3c80-7bce-4302-821d-22996fa6dc29",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -531,6 +540,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ThrowStone",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a41d56f-0785-4881-9dd8-0093eeb06952",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FastForwardCutscene",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

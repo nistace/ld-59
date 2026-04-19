@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 5193980116527505937}
   - component: {fileID: 733649502111171045}
   - component: {fileID: 2830747998653458524}
+  - component: {fileID: 1290312099057508757}
   m_Layer: 6
   m_Name: Molt
   m_TagString: Untagged
@@ -163,6 +164,7 @@ Transform:
   m_Children:
   - {fileID: 780912904200430824}
   - {fileID: 4344043436346699675}
+  - {fileID: 6388990802565046126}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 16.116, z: 0}
 --- !u!114 &1519649723561045635
@@ -178,11 +180,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.MoleController
   _character: {fileID: 733649502111171045}
-  _acceleration: 3
-  _maxSpeed: 3
-  _deceleration: 3
+  _acceleration: 5
+  _maxSpeed: 5
+  _deceleration: 5
   _knockedOutTime: 3
-  _knockedOutSpeed: -0.5
+  _knockedOutSpeed: -0.6
+  _onKnockedOut:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6536840464888854467}
+        m_TargetAssemblyTypeName: LD59.ExtractMoles.Moles.StunnedMoleEffect, Assembly-CSharp
+        m_MethodName: SetTargetScale
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1290312099057508757}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 4705ec02722f2044cb083fd9266f9a3d, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _onNotKnockedOut:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6536840464888854467}
+        m_TargetAssemblyTypeName: LD59.ExtractMoles.Moles.StunnedMoleEffect, Assembly-CSharp
+        m_MethodName: SetTargetScale
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!136 &5193980116527505937
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -225,6 +269,7 @@ MonoBehaviour:
   _gizmoColor: {r: 0.76374185, g: 1, b: 0.21226418, a: 1}
   _despawnData: {fileID: 11400000, guid: 818ec38093d657344a4ea72eaa119127, type: 2}
   _groundDetector: {fileID: 3227594041925843747}
+  _maxFallSpeed: 5
 --- !u!54 &2830747998653458524
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -252,6 +297,103 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!82 &1290312099057508757
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812887920185877955}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6202440419112451402, guid: 529d824ace856974885a2a9eac519bb5, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4031319538360402349
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +792,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 780912904200430824}
+  - component: {fileID: 7503855564101164102}
+  - component: {fileID: 1235524166978440555}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -674,6 +818,42 @@ Transform:
   - {fileID: 8510585735090635173}
   m_Father: {fileID: 8718529327094965968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7503855564101164102
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441539414987705783}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 396799a458a8c454088531ec672525dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1235524166978440555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441539414987705783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd7a3cb1b75a4b738c46264002a7a74d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Moles.MoleAnimator
+  _animator: {fileID: 7503855564101164102}
+  _moleController: {fileID: 1519649723561045635}
 --- !u!1 &9053319328214408753
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +918,95 @@ Transform:
   - {fileID: 3616229564852201057}
   m_Father: {fileID: 7157788537869975462}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5121095159481382737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8718529327094965968}
+    m_Modifications:
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.104
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159411241243756094, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_Name
+      value: Stunned Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159411241243756094, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+--- !u!4 &6388990802565046126 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2286572568691124287, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+  m_PrefabInstance: {fileID: 5121095159481382737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6536840464888854467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2136479936800964754, guid: 09e78ca11efbaa44c9d822ca9431303a, type: 3}
+  m_PrefabInstance: {fileID: 5121095159481382737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27c26646e774257b5462a346d282a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Moles.StunnedMoleEffect
 --- !u!1001 &5279291246647373334
 PrefabInstance:
   m_ObjectHideFlags: 0

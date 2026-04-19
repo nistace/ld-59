@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8433811739013874061}
-  - component: {fileID: 1263401151871821436}
   - component: {fileID: 7316511856105280821}
   m_Layer: 11
   m_Name: GroundDetector
@@ -33,27 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1263401151871821436
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5541947419564685482}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.05
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7316511856105280821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4df13c463c44e182db7970be67dc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Characters.GroundDetector
+  _localOrigin: {x: 0, y: 0.2, z: 0}
+  _distanceWithHitToBeGrounded: 0.05
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 129

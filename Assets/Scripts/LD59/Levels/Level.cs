@@ -1,4 +1,6 @@
 ﻿using LD59.ExtractMoles.Characters;
+using LD59.ExtractMoles.Cutscenes;
+using LD59.ExtractMoles.PlayerControllers;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,13 +16,20 @@ namespace LD59.Levels
       [SerializeField] private LevelFancySpawnable[] _objectsToKeepWithNextLevel;
       [SerializeField] private CharacterSpawner[] _moleSpawners;
       [SerializeField] private CharacterSpawner _playerSpawner;
+      [SerializeField] private bool _spawnBeforeIntroCutscene = true;
+      [SerializeField] private CutsceneScript _introScript;
+      [SerializeField] private PlayerInfo.PlayerActions _activeActionsAfterCutscene = (PlayerInfo.PlayerActions)~0;
+      [SerializeField] private UnityEvent _levelStarted = new();
 
       public Vector3 NextLevelAnchorPosition => _nextLevelAnchor.position;
       public IReadOnlyList<LevelFancySpawnable> ObjectsToKeepWithNextLevel => _objectsToKeepWithNextLevel;
       public Transform CenterOfTheRoom => _centerOfRoom;
+      public CutsceneScript IntroScript => _introScript;
+      public bool SpawnBeforeIntroCutscene => _spawnBeforeIntroCutscene;
 
       public CharacterSpawner[] MoleSpawners => _moleSpawners;
       public CharacterSpawner PlayerSpawner => _playerSpawner;
+      public PlayerInfo.PlayerActions ActiveActionsAfterCutscene => _activeActionsAfterCutscene;
 
       public UnityEvent OnLevelEnded => _roomExit.OnEveryoneLeftRoom;
 
@@ -73,5 +82,7 @@ namespace LD59.Levels
             Gizmos.DrawCube( Vector3.zero + Vector3.forward * .3f, Vector3.one * .1f );
          }
       }
+
+      public void StartLevel() => _levelStarted.Invoke();
    }
 }

@@ -53,11 +53,12 @@ namespace LD59.ExtractMoles.Characters
          Destroy( gameObject );
       }
 
-      public void UpdateGravity()
+      public void UpdateVerticalPosition()
       {
-         if(Grounded)
+         if(_groundDetector.Grounded)
          {
             _verticalSpeed = 0;
+            transform.position = new Vector3( transform.position.x, _groundDetector.GroundWorldY, transform.position.z );
          }
          else
          {

@@ -2,6 +2,7 @@
 using LD59.ExtractMoles.Cameras;
 using LD59.ExtractMoles.Characters;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace LD59.ExtractMoles.PlayerControllers
@@ -17,9 +18,13 @@ namespace LD59.ExtractMoles.PlayerControllers
       [SerializeField] private AnimationCurve _heightCurve;
       [SerializeField] private AnimationCurve _heightPerDistance;
       [SerializeField] private Collider[] _nonAllocColliders = new Collider[ 16 ];
+      [SerializeField] private UnityEvent _stoneThrown = new();
+      [SerializeField] private UnityEvent _stoneHit = new();
 
       private PlayerConfig.StoneThrowingData Config => _playerInfo.Config.StoneThrowing;
       private bool IsThrowing { get; set; }
+
+      public static UnityEvent OnAnyStoneHit { get; } = new();
 
       private void OnDisable()
       {
@@ -32,6 +37,7 @@ namespace LD59.ExtractMoles.PlayerControllers
       private bool IsInteractionAllowed()
       {
          if(_playerInfo.LockedByInteraction) return false;
+         if(!_playerInfo.Can( PlayerInfo.PlayerActions.ThrowStones )) return false;
          if(IsThrowing) return false;
          if(_activateMode != null && !_activateMode.action.IsPressed()) return false;
 
@@ -65,6 +71,8 @@ namespace LD59.ExtractMoles.PlayerControllers
 
       private async UniTask ThrowStone( Vector3 targetPoint )
       {
+         _stoneThrown.Invoke();
+
          IsThrowing = true;
          var origin = transform.position;
          var distance = Vector2.Distance( new Vector2( origin.x, origin.z ), new Vector2( targetPoint.x, targetPoint.z ) );
@@ -96,6 +104,9 @@ namespace LD59.ExtractMoles.PlayerControllers
          {
             _nonAllocColliders[ hitIndex ].gameObject.GetComponentInParent<IStoneSoundReactor>()?.ReactToStoneSound( targetPoint );
          }
+
+         _stoneHit.Invoke();
+         OnAnyStoneHit.Invoke();
 
          IsThrowing = false;
       }

@@ -1,11 +1,13 @@
 ﻿using Cysharp.Threading.Tasks;
 using LD59.ExtractMoles.Interactables;
+using LD59.Levels;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LD59.ExtractMoles.Mechanisms
 {
-   public class Door : MonoBehaviour
+   public class Door : MonoBehaviour, ILevelKeptItem
    {
       [SerializeField] private StateHolder _linkedStateHolder;
       [SerializeField] private State _openState;
@@ -13,6 +15,7 @@ namespace LD59.ExtractMoles.Mechanisms
       [SerializeField] private Vector3 _openLocalPosition = new(0, -1, 0);
       [SerializeField] private Vector3 _closeLocalPosition = Vector3.zero;
       [SerializeField] private float _speed = 4;
+      [SerializeField] private UnityEvent _movement = new();
 
       private CancellationTokenSource _cancellationTokenSource;
 
@@ -40,6 +43,11 @@ namespace LD59.ExtractMoles.Mechanisms
 
       private async UniTask Animate( Vector3 targetLocalPosition, CancellationToken token )
       {
+         if(_doorObject.localPosition != targetLocalPosition)
+         {
+            _movement.Invoke();
+         }
+
          while(_doorObject.localPosition != targetLocalPosition)
          {
             _doorObject.localPosition = Vector3.MoveTowards( _doorObject.localPosition, targetLocalPosition, _speed * Time.deltaTime );
@@ -50,11 +58,22 @@ namespace LD59.ExtractMoles.Mechanisms
 
       private void OnDestroy()
       {
-         _linkedStateHolder.OnStateChanged.RemoveListener( HandleStateChanged );
+         if(_linkedStateHolder)
+         {
+            _linkedStateHolder.OnStateChanged.RemoveListener( HandleStateChanged );
+         }
 
          _cancellationTokenSource?.Cancel();
          _cancellationTokenSource?.Dispose();
          _cancellationTokenSource = null;
+      }
+
+      public void NotifyItemKept()
+      {
+         _cancellationTokenSource?.Cancel();
+         _cancellationTokenSource?.Dispose();
+         _cancellationTokenSource = new CancellationTokenSource();
+         Animate( _closeLocalPosition, _cancellationTokenSource.Token ).Forget();
       }
    }
 }

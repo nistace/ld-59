@@ -252,14 +252,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2798554772446118456}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.0033976436, y: -0, z: 2.3283064e-10, w: 0.9999943}
   m_LocalPosition: {x: -0, y: 0.0034225397, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6223424335094513584}
   m_Father: {fileID: 7637437955900373648}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.389, y: 0, z: 0}
 --- !u!1 &3703362203052226580
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +269,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5727503189451303267}
+  - component: {fileID: 2777513381714537412}
+  - component: {fileID: 2807220274664769447}
   m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
@@ -293,6 +295,42 @@ Transform:
   - {fileID: 7215157034679448039}
   m_Father: {fileID: 6341263093956208799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2777513381714537412
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703362203052226580}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c763d07a359642e4d97c53233863011b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2807220274664769447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703362203052226580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6e0361b34d46bd8a57009341cd43fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.PlayerControllers.PlayerAnimator
+  _animator: {fileID: 2777513381714537412}
+  _movementController: {fileID: 2758786637107638699}
 --- !u!1 &3871828625931151524
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +420,7 @@ Transform:
   m_GameObject: {fileID: 4453281056200204563}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -479,7 +517,7 @@ Transform:
   m_GameObject: {fileID: 5876323638997714092}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.0029964696, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0029964696, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -505,6 +543,7 @@ GameObject:
   - component: {fileID: 982005308883691330}
   - component: {fileID: 8222123085596907060}
   - component: {fileID: 4560533042801820330}
+  - component: {fileID: 2710617666015838514}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -638,6 +677,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _stoneThrown:
+    m_PersistentCalls:
+      m_Calls: []
+  _stoneHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &603787759996044554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +697,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.PlayerControllers.SignalEmitter
   _playerInfo: {fileID: 4560533042801820330}
   _emitSignalActionReference: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _signalEmitted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2710617666015838514}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 6e62e2d680fae9e468d36c0900cd0bd1, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8585752629005412345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +755,7 @@ MonoBehaviour:
   _gizmoColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
   _despawnData: {fileID: 11400000, guid: 818ec38093d657344a4ea72eaa119127, type: 2}
   _groundDetector: {fileID: 8998362940177995648}
+  _maxFallSpeed: 5
 --- !u!136 &982005308883691330
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -758,6 +819,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.PlayerControllers.PlayerInfo
   _playerConfig: {fileID: 11400000, guid: f77b656301ef22241b7a517d2a73b358, type: 2}
+--- !u!82 &2710617666015838514
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748835995278348767}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6202440419112451402, guid: 529d824ace856974885a2a9eac519bb5, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6854038517696375338
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,14 +940,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6854038517696375338}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38256156, y: 0.000000014901161, z: 0.000000009313226, w: 0.92393005}
+  m_LocalRotation: {x: 0.3640783, y: 0.024599044, z: -0.23562539, w: 0.9007345}
   m_LocalPosition: {x: 1.8626451e-11, y: 0.0029964696, z: -1.7957064e-10}
   m_LocalScale: {x: 0.9999999, y: 0.9999998, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1356103266690061399}
   m_Father: {fileID: 5038990346549868719}
-  m_LocalEulerAnglesHint: {x: 44.985, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 41.872, y: -9.84, z: -33.092}
 --- !u!1 &7995596165521893382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,17 +1161,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone
       objectReference: {fileID: 0}
+    - target: {fileID: 8189636901799873953, guid: 8b7e3e238cca97045b4ff032d5a708b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8612875613206859278, guid: 8b7e3e238cca97045b4ff032d5a708b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.099530086
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8612875613206859278, guid: 8b7e3e238cca97045b4ff032d5a708b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.64332
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8612875613206859278, guid: 8b7e3e238cca97045b4ff032d5a708b8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.28300166
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8612875613206859278, guid: 8b7e3e238cca97045b4ff032d5a708b8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1043,7 +1205,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5369172651499084569, guid: 8b7e3e238cca97045b4ff032d5a708b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

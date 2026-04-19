@@ -1,0 +1,156 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbf9a93e5c54b219dd12618afbe88c8, type: 3}
+  m_Name: Level1.1
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Cutscenes.CutsceneScript
+  _initialCharacterPositions:
+  - _character: 0
+    _characterPosition: 0
+    _await: 1
+  - _character: 1
+    _characterPosition: 5
+    _await: 1
+  - _character: 2
+    _characterPosition: 5
+    _await: 1
+  - _character: 3
+    _characterPosition: 5
+    _await: 1
+  _delayBefore: 0.1
+  _lines:
+  - _text: Mister Mole?
+    _eventBefore: 0
+    _characterChanges:
+    - _character: 0
+      _characterPosition: 2
+      _await: 1
+    _delayBefore: 0.1
+    _delayAfter: 0.2
+    _clip: {fileID: 8300000, guid: 145bf35b054036e40a2098ba761ef316, type: 3}
+    _character: 0
+  - _text: Oh please, call me Molt.
+    _eventBefore: 1
+    _characterChanges:
+    - _character: 1
+      _characterPosition: 3
+      _await: 1
+    _delayBefore: 0
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 13f9ec971c454c645bc7b6b10a6f2084, type: 3}
+    _character: 1
+  - _text: "Okay, Molt. I\u2019ve got a contract to extract you."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 97de4eae250d0e14b92218b8dc4d6ca9, type: 3}
+    _character: 0
+  - _text: "I found your tunnel. It got me in, it\u2019ll get us out. Follow me."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: d51bdf6598ae6c64f931c525b26a391b, type: 3}
+    _character: 0
+  - _text: "Kiddo\u2026 I\u2019m a mole. I can\u2019t see. I don\u2019t know where
+      you are."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.3
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: f37e5f98f2475a84ba1c67900b25f1db, type: 3}
+    _character: 1
+  - _text: Then just follow my voice.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: f7bd9c232fd197843a4f704f8fc1489a, type: 3}
+    _character: 0
+  - _text: "Not precise enough. That\u2019s\u2026 a bit scary."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 1110d634367eebc4aa1067afffbbdf02, type: 3}
+    _character: 1
+  - _text: "What? So you won\u2019t move?"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: ce92b20def7f88f49a35d5e7e750e402, type: 3}
+    _character: 0
+  - _text: I can run straight. Very straight. Just give me a signal.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.15
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 3564815269a160d4dba2b8da22c54913, type: 3}
+    _character: 1
+  - _text: "\u2026Right. Okay. On my signal then. Run!"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: df039fa703c4e0948b2d440f64c5fa2d, type: 3}
+    _character: 0
+  - _text: "No. That won\u2019t work. I don\u2019t like your signal."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.15
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 20bd0ffbac91acc43b372e195dd84b09, type: 3}
+    _character: 1
+  - _text: "What do you mean? That\u2019s a perfectly good signal."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.05
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 37ccf502cfeb8e643935480afef3a1a9, type: 3}
+    _character: 0
+  - _text: Can you whistle? A clean one.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.2
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 23dd9f2a6011d724499c207163fd534f, type: 3}
+    _character: 1
+  - _text: 'A whistle makes you move? *whistle* '
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: b33d1f8c599dbdc46b1312a16fe2cc4f, type: 3}
+    _character: 0
+  - _text: You can do better.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 69c18ca341b85fb4c854441137012d6f, type: 3}
+    _character: 1
+  - _text: '*better whistle*'
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 3e42c684cfe44f2478f5545c9bf3f200, type: 3}
+    _character: 0
+  - _text: I said better!
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: cca79e5f21ab9d4498bf413c961e12c4, type: 3}
+    _character: 1
+  _delayAfter: 0.1

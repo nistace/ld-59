@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using LD59.ExtractMoles.Cameras;
+using LD59.ExtractMoles.PlayerControllers;
 using LD59.ExtractMoles.Utilities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -19,40 +19,56 @@ namespace LD59.Levels
       [SerializeField] private SpawnWithScaleConfigurationData _despawnData;
       [SerializeField] private float _spawnDuration = 3;
 
-      private Level CurrentLevel { get; set; }
+      public enum LevelState
+      {
+         Null = 0,
+         ReadyToSpawn = 1,
+         Spawned = 2,
+         Despawned = 3
+      }
+
+      public Level CurrentLevel { get; private set; }
+      public LevelState CurrentLevelState { get; private set; }
+      private Level NextLevel { get; set; }
+      private List<LevelFancySpawnable> ItemsFromPreviousLevel { get; } = new();
       private int CurrentLevelIndex { get; set; }
 
       public UnityEvent OnCurrentLevelEnded { get; } = new();
 
-      public async UniTask GoToNextLevel()
+      public void InstantiateFirstLevel()
       {
-         var nextLevelSpawnPosition = Vector3.zero;
-         IReadOnlyList<LevelFancySpawnable> itemsToKeepBetweenLevels = Array.Empty<LevelFancySpawnable>();
-
-         if(CurrentLevel)
-         {
-            nextLevelSpawnPosition = CurrentLevel.NextLevelAnchorPosition;
-            itemsToKeepBetweenLevels = CurrentLevel.ObjectsToKeepWithNextLevel;
-
-            foreach(var itemFromPreviousLevel in itemsToKeepBetweenLevels)
-            {
-               itemFromPreviousLevel.transform.SetParent( null );
-            }
-
-            await Despawn();
-            CurrentLevelIndex++;
-            CurrentLevel.OnLevelEnded.RemoveListener( OnCurrentLevelEnded.Invoke );
-         }
-         else
-         {
-            CurrentLevelIndex = _firstLevelIndex;
-         }
-
-         await Spawn( CurrentLevelIndex, nextLevelSpawnPosition, itemsToKeepBetweenLevels );
+         CurrentLevelIndex = _firstLevelIndex;
+         CurrentLevel = Instantiate( _levels[ CurrentLevelIndex ], Vector3.zero, Quaternion.identity );
+         CurrentLevel.gameObject.SetActive( false );
+         CurrentLevelState = LevelState.ReadyToSpawn;
       }
 
-      private async UniTask Despawn()
+      public bool HasNextLevel() => CurrentLevelIndex < _levels.Length - 1;
+
+      public Level InstantiateNextLevel()
       {
+         NextLevel = Instantiate( _levels[ CurrentLevelIndex + 1 ], CurrentLevel.NextLevelAnchorPosition, Quaternion.identity );
+         NextLevel.gameObject.SetActive( false );
+
+         return NextLevel;
+      }
+
+      public async UniTask DespawnCurrentLevel()
+      {
+         ItemsFromPreviousLevel.AddRange( CurrentLevel.ObjectsToKeepWithNextLevel );
+
+         foreach(var itemToNotify in ItemsFromPreviousLevel.SelectMany( t => t.GetComponentsInChildren<ILevelKeptItem>() ))
+         {
+            itemToNotify.NotifyItemKept();
+         }
+
+         foreach(var itemFromPreviousLevel in ItemsFromPreviousLevel)
+         {
+            itemFromPreviousLevel.transform.SetParent( null );
+         }
+
+         CurrentLevel.OnLevelEnded.RemoveListener( OnCurrentLevelEnded.Invoke );
+
          var spawnables = CurrentLevel.GetComponentsInChildren<LevelFancySpawnable>()
             .Except( CurrentLevel.ObjectsToKeepWithNextLevel )
             .OrderByDescending( t => t.Priority )
@@ -62,13 +78,19 @@ namespace LD59.Levels
          await AnimateSpawningAsync( spawnables, _despawnData.Data );
 
          Destroy( CurrentLevel.gameObject );
+         CurrentLevelState = LevelState.Despawned;
       }
 
-      private async UniTask Spawn( int levelIndex, Vector3 position, IReadOnlyList<LevelFancySpawnable> itemFromPreviousLevel )
+      public void MoveNextLevelToCurrent()
       {
-         CurrentLevelIndex = levelIndex;
-         CurrentLevel = Instantiate( _levels[ CurrentLevelIndex ], position, Quaternion.identity );
-         CurrentLevel.gameObject.SetActive( false );
+         CurrentLevelIndex++;
+         CurrentLevel = NextLevel;
+         NextLevel = null;
+         CurrentLevelState = LevelState.ReadyToSpawn;
+      }
+
+      public async UniTask SpawnCurrentLevel()
+      {
          _camera.CenterOfTheRoom = CurrentLevel.CenterOfTheRoom;
          CurrentLevel.OnLevelEnded.AddListener( OnCurrentLevelEnded.Invoke );
 
@@ -76,10 +98,12 @@ namespace LD59.Levels
 
          var spawnables = CurrentLevel.GetComponentsInChildren<LevelFancySpawnable>().OrderBy( t => t.Priority ).ThenBy( _ => Random.value ).ToArray();
 
-         foreach(var item in itemFromPreviousLevel)
+         foreach(var itemFromPreviousLevel in ItemsFromPreviousLevel)
          {
-            item.transform.SetParent( CurrentLevel.transform );
+            itemFromPreviousLevel.transform.SetParent( CurrentLevel.transform );
          }
+
+         ItemsFromPreviousLevel.Clear();
 
          foreach(var spawnable in spawnables)
          {
@@ -96,7 +120,10 @@ namespace LD59.Levels
          }
 
          var player = await CurrentLevel.PlayerSpawner.SpawnAsync();
+         player.GetComponent<PlayerInfo>().ActiveActions = 0;
          _camera.FollowCam = player.transform;
+
+         CurrentLevelState = LevelState.Spawned;
       }
 
       private async UniTask AnimateSpawningAsync( LevelFancySpawnable[] _allSpawningItems, SpawnWithScale.Data spawnData )

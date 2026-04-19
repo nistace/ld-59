@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbf9a93e5c54b219dd12618afbe88c8, type: 3}
+  m_Name: Level3.1
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Cutscenes.CutsceneScript
+  _initialCharacterPositions:
+  - _character: 0
+    _characterPosition: 0
+    _await: 1
+  - _character: 1
+    _characterPosition: 5
+    _await: 1
+  - _character: 2
+    _characterPosition: 5
+    _await: 1
+  - _character: 3
+    _characterPosition: 5
+    _await: 1
+  _delayBefore: 0
+  _lines:
+  - _text: "Oh crap\u2026"
+    _eventBefore: 1
+    _characterChanges:
+    - _character: 0
+      _characterPosition: 2
+      _await: 0
+    - _character: 1
+      _characterPosition: 3
+      _await: 1
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 5dfcd5e66ac950a4cbb50f30e3b6fff4, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: What?
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 86a91877c611e744b9ab8342dd7ecbf5, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "There\u2019s a ladder."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 4e0e48423b09a0f4da25829cb4172e68, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: Okay.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: bc4ea6b5ac563184ca88caf110be84b2, type: 3}
+    _character: 1
+    _endWithAShrug: 1
+  - _text: "You\u2019re not climbing that, right?"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: e8c7add4a4246634fbdfd6fa614b2831, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: Haha. No.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 5dbc1a326698b444b8724d6ed64ae23c, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  _delayAfter: 0.1

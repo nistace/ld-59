@@ -4,6 +4,7 @@ using LD59.ExtractMoles.Interactables;
 using LD59.ExtractMoles.Signals;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LD59.ExtractMoles.Moles
 {
@@ -16,11 +17,16 @@ namespace LD59.ExtractMoles.Moles
       [SerializeField] private float _deceleration = 1;
       [SerializeField] private float _knockedOutTime = 3;
       [SerializeField] private float _knockedOutSpeed = -.5f;
+      [SerializeField] private UnityEvent _onKnockedOut = new();
+      [SerializeField] private UnityEvent _onNotKnockedOut = new();
 
       private float KnockedOutCooldown { get; set; }
-      private bool IsKnockedOut => KnockedOutCooldown > 0;
+      public bool IsKnockedOut => KnockedOutCooldown > 0;
       private bool HasToRun { get; set; }
       private float Speed { get; set; }
+      public float SpeedNormalized => Speed / _maxSpeed;
+
+      public static UnityEvent OnAnyMoleKnockedOut { get; } = new();
 
       private void OnEnable() => SignalSystem.Register( this );
       private void OnDisable() => SignalSystem.Unregister( this );
@@ -39,9 +45,14 @@ namespace LD59.ExtractMoles.Moles
          if(IsKnockedOut)
          {
             KnockedOutCooldown -= Time.deltaTime;
+
+            if(!IsKnockedOut)
+            {
+               _onNotKnockedOut.Invoke();
+            }
          }
 
-         _character.UpdateGravity();
+         _character.UpdateVerticalPosition();
 
          Speed = Mathf.MoveTowards( Speed, HasToRun ? _maxSpeed : 0, (HasToRun && _character.Grounded ? _acceleration : _deceleration) * Time.deltaTime );
 
@@ -62,6 +73,8 @@ namespace LD59.ExtractMoles.Moles
             HasToRun = false;
             Speed *= _knockedOutSpeed;
             KnockedOutCooldown = _knockedOutTime;
+            _onKnockedOut.Invoke();
+            OnAnyMoleKnockedOut.Invoke();
          }
          else
          {

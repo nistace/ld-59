@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbf9a93e5c54b219dd12618afbe88c8, type: 3}
+  m_Name: Level2.1
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Cutscenes.CutsceneScript
+  _initialCharacterPositions:
+  - _character: 0
+    _characterPosition: 0
+    _await: 1
+  - _character: 1
+    _characterPosition: 5
+    _await: 1
+  - _character: 2
+    _characterPosition: 5
+    _await: 1
+  - _character: 3
+    _characterPosition: 5
+    _await: 1
+  _delayBefore: 0
+  _lines:
+  - _text: "So\u2026 do you know where we are?"
+    _eventBefore: 1
+    _characterChanges:
+    - _character: 0
+      _characterPosition: 2
+      _await: 0
+    - _character: 1
+      _characterPosition: 3
+      _await: 1
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 5124113b4e941684da2edc0a707eee0a, type: 3}
+    _character: 0
+  - _text: I believe this is a highly secured military complex.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: da7e1aab3fa540a4d9259723283ac492, type: 3}
+    _character: 1
+  - _text: Run by hamsters.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: ae4a218e5b1bd6f49a56d37a7b515f0a, type: 3}
+    _character: 1
+  - _text: The most terrifying flesh-eating hamsters in the world.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 920fe45a9a9e0354d89d060b4a414a12, type: 3}
+    _character: 1
+  - _text: "\u2026Of course it is."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: b121d2ca1d88f9f41bef513ac0c8935f, type: 3}
+    _character: 0
+  - _text: ' Why are you even here? Why dig a tunnel into this place?'
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.3
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: b3e186173e01d9d43a14715564232b6f, type: 3}
+    _character: 0
+  - _text: I dig tunnels.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.05
+    _clip: {fileID: 8300000, guid: 747a8d38e5a666140a01e5874d1ce293, type: 3}
+    _character: 1
+  - _text: In straight lines.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: de9e6d0d07469c843b5b2fd101eacd69, type: 3}
+    _character: 1
+  - _text: "I don\u2019t choose where they end."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: e56629a4ecb1c554492557b8a5ef43f1, type: 3}
+    _character: 1
+  - _text: "Yeah, well\u2026 I\u2019m only saving you once."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: a3d9a4ac72307714782f0b14c7f40e91, type: 3}
+    _character: 0
+  - _text: So. Problem.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.5
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 00b5b223ce896d848a06a8bfc47b2216, type: 3}
+    _character: 0
+  - _text: "There\u2019s a door. I don\u2019t see how to open it."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 2c4084363388f3c4e87092a8d37b6252, type: 3}
+    _character: 0
+  - _text: "Oh! Then you\u2019ll have to use your head, kiddo."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: c714e9413b4e1b84696caff90f68bd93, type: 3}
+    _character: 1
+  - _text: "\u2026Hey, *you* use your head - ... Oh wait..."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 124097712825aeb4bb058fcdc67bd633, type: 3}
+    _character: 0
+  _delayAfter: 0.1
