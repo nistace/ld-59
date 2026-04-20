@@ -17,7 +17,7 @@ MonoBehaviour:
     _smoothForward: 0.1
     _climbSpeed: 3
   _stoneThrowing:
-    _stoneNoiseRadius: 3
+    _stoneNoiseRadius: 1.5
     _stoneSpeed: 6
     _stoneHitMask:
       serializedVersion: 2

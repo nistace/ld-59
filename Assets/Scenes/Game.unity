@@ -937,7 +937,7 @@ MonoBehaviour:
   - {fileID: 7482883351598180299, guid: 00b012d7615a33e479f5a738fdb2776d, type: 3}
   - {fileID: 5916805307937328188, guid: ec1c4372c3b94084b986d5934a52e7c0, type: 3}
   - {fileID: 5563288174743889311, guid: e4827d1c60743ed44ad3e09051477e08, type: 3}
-  _firstLevelIndex: 0
+  _firstLevelIndex: 3
   _spawnData: {fileID: 11400000, guid: 094d0d61619215843b5690d38bc98096, type: 2}
   _despawnData: {fileID: 11400000, guid: 818ec38093d657344a4ea72eaa119127, type: 2}
   _spawnDuration: 3

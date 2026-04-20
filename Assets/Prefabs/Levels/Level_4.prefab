@@ -3328,6 +3328,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5805ba4500cfe384ab3ee344c03dd86f, type: 3}
+--- !u!114 &1910353849194855165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 873593722628050386, guid: 5805ba4500cfe384ab3ee344c03dd86f, type: 3}
+  m_PrefabInstance: {fileID: 1629547051741001519}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!4 &6273903363635374355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4723204769296145980, guid: 5805ba4500cfe384ab3ee344c03dd86f, type: 3}
@@ -14512,7 +14523,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 55f55059a24e1844fb186db70e5286d0, type: 2}
     - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: _objectsToKeepWithNextLevel.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: '_objectsToKeepWithNextLevel.Array.data[0]'
@@ -14538,6 +14549,10 @@ PrefabInstance:
       propertyPath: '_objectsToKeepWithNextLevel.Array.data[5]'
       value: 
       objectReference: {fileID: 4946174034456267542}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1910353849194855165}
     - target: {fileID: 3960560804717966560, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_Name
       value: Level_4
