@@ -1,6 +1,5 @@
 ﻿using LD59.ExtractMoles.Utilities;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace LD59.ExtractMoles.Cutscenes
@@ -19,7 +18,7 @@ namespace LD59.ExtractMoles.Cutscenes
          _previousText.transform.position = _text.transform.position;
          _previousText.text = _text.text;
          _previousText.color = _text.color;
-         _text.color = _text.color.WithAlpha( 0 );
+         _text.color = _text.color.Alpha( 0 );
 
          HasText = false;
       }
