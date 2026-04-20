@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbf9a93e5c54b219dd12618afbe88c8, type: 3}
+  m_Name: Level6.1
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Cutscenes.CutsceneScript
+  _initialCharacterPositions:
+  - _character: 0
+    _characterPosition: 0
+    _await: 1
+  - _character: 1
+    _characterPosition: 5
+    _await: 1
+  - _character: 2
+    _characterPosition: 5
+    _await: 1
+  - _character: 3
+    _characterPosition: 5
+    _await: 1
+  _delayBefore: 0
+  _lines:
+  - _text: We made it! I can smell it!
+    _eventBefore: 1
+    _characterChanges:
+    - _character: 0
+      _characterPosition: 2
+      _await: 0
+    - _character: 1
+      _characterPosition: 3
+      _await: 1
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 77fedcdde192dcf4ca9e93eb5a5f40f7, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "We\u2019re not outside."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: fb2a6f7d9ba20bb418269a12070d51fb, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: No, but we found my friend. Molecule!
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: a3f5aecf676391e45a26a7ab8b80ee2e, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "I don\u2019t care about your friend. I\u2019m here to extract you."
+    _eventBefore: 0
+    _characterChanges:
+    - _character: 0
+      _characterPosition: 1
+      _await: 0
+    - _character: 1
+      _characterPosition: 2
+      _await: 0
+    - _character: 2
+      _characterPosition: 3
+      _await: 1
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 4713443a09d35e94a8f9619d278bb1dc, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: I thought you were leading us to the main entrance.
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 67faac64f35d0124a8a463f3ff4942a8, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: "I thought you said, \u201CLet\u2019s find Molecule.\u201D"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: b1b6788c0561f7045a808e903cbbc0d3, type: 3}
+    _character: 1
+    _endWithAShrug: 1
+  - _text: "That doesn\u2019t even sound the same!"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 712f08adc2be9f14cba69a9774f7a025, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: Molt? How are you?
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 28fa45669915ad94a9df5979b35b3cf2, type: 3}
+    _character: 2
+    _endWithAShrug: 0
+  - _text: Hello!
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 29ffc927b1680884ea262a52410aab1b, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "I\u2019ve been adopted by a rat."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: e526323a1640f154086b445defd28c82, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "He says he\u2019s handsome."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 42c869f65eabab84eb786094a6542883, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "We\u2019re playing signals."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 4a98c3dcca9343c4a85c165a2c787f5d, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "He\u2019s in a hurry, though."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 66280234dacd7984eb259a6e0c4451d5, type: 3}
+    _character: 1
+    _endWithAShrug: 1
+  - _text: "Oh. Okay. Let\u2019s go."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 288ef1c6eeb85c84e9bd81d27f177b41, type: 3}
+    _character: 2
+    _endWithAShrug: 0
+  - _text: "\u2026Wait. What?"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: e0a8b9cd397ac254cb5d1c3f4df524f1, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  _delayAfter: 0.1

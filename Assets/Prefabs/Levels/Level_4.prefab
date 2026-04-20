@@ -478,6 +478,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 511843917899216499, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
   m_PrefabInstance: {fileID: 174574511085031048}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8294953552434797645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8174507047718621893, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
+  m_PrefabInstance: {fileID: 174574511085031048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!1001 &208262409536698812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -845,6 +856,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
+--- !u!114 &2843726726610985603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2572282912744023383, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
+  m_PrefabInstance: {fileID: 343513589304559572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!4 &4070239724974331618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4375250048355914038, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
@@ -1036,6 +1058,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 511843917899216499, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
   m_PrefabInstance: {fileID: 385720557049933695}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8371052703038897594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8174507047718621893, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
+  m_PrefabInstance: {fileID: 385720557049933695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!1001 &393607282555496131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5861,6 +5894,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 511843917899216499, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
   m_PrefabInstance: {fileID: 3305091370882451652}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6678739077914319361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8174507047718621893, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
+  m_PrefabInstance: {fileID: 3305091370882451652}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!1001 &3383077450173924283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6543,6 +6587,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 511843917899216499, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
   m_PrefabInstance: {fileID: 3879281314661456339}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4946174034456267542 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8174507047718621893, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
+  m_PrefabInstance: {fileID: 3879281314661456339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!1001 &3886631408575107678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13918,6 +13973,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4375250048355914038, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
   m_PrefabInstance: {fileID: 8285277234965430984}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5857390985550817183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2572282912744023383, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
+  m_PrefabInstance: {fileID: 8285277234965430984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!1001 &8355461626538818337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14444,6 +14510,34 @@ PrefabInstance:
       propertyPath: _introScript
       value: 
       objectReference: {fileID: 11400000, guid: 55f55059a24e1844fb186db70e5286d0, type: 2}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: _objectsToKeepWithNextLevel.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5857390985550817183}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2843726726610985603}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6678739077914319361}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8371052703038897594}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8294953552434797645}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[5]'
+      value: 
+      objectReference: {fileID: 4946174034456267542}
     - target: {fileID: 3960560804717966560, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_Name
       value: Level_4
