@@ -118,8 +118,6 @@ namespace LD59.Levels
             itemFromPreviousLevel.transform.SetParent( CurrentLevel.transform );
          }
 
-         ItemsFromPreviousLevel.Clear();
-
          foreach(var spawnable in spawnables)
          {
             spawnable.transform.localScale = Vector3.zero;
