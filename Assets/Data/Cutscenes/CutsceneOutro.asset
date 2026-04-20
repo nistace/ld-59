@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbf9a93e5c54b219dd12618afbe88c8, type: 3}
+  m_Name: CutsceneOutro
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.ExtractMoles.Cutscenes.CutsceneScript
+  _initialCharacterPositions:
+  - _character: 0
+    _characterPosition: 0
+    _await: 1
+  - _character: 1
+    _characterPosition: 5
+    _await: 1
+  - _character: 2
+    _characterPosition: 5
+    _await: 1
+  - _character: 3
+    _characterPosition: 5
+    _await: 1
+  _delayBefore: 0
+  _lines:
+  - _text: "Okay\u2026 I think that\u2019s the main entrance. At last!"
+    _eventBefore: 0
+    _characterChanges:
+    - _character: 0
+      _characterPosition: 2
+      _await: 0
+    - _character: 1
+      _characterPosition: 3
+      _await: 1
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 7035d6e73f909bd42b72a248efd4e6c8, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: Great! We make such a good team!
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 8419973f646744246b55d89dac7409e9, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: Captain Molt, where are you going?
+    _eventBefore: 0
+    _characterChanges:
+    - _character: 1
+      _characterPosition: 2
+      _await: 0
+    - _character: 0
+      _characterPosition: 1
+      _await: 1
+    - _character: 3
+      _characterPosition: 3
+      _await: 1
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: d6650ca3e814d5847aa893abbd780e1f, type: 3}
+    _character: 3
+    _endWithAShrug: 0
+  - _text: Uh?
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 1a711d5504124114ba2d5c0b9df051be, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "There\u2019s work to do, Captain Molt."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: a579e11d90f29c447a0b51a19175543a, type: 3}
+    _character: 3
+    _endWithAShrug: 0
+  - _text: "\u2026Captain Molt?"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 5a9c0d101a7e92f4082781a0161c6069, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: "Wait\u2026 that rings a bell."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 855a95a97d72bf74e9dcb4eb731c80ce, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: "Oh! That\u2019s me!"
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 704c0ac80bb4aa84ca8093c7d95a6b79, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: Riiight, I run this complex!
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 04bfd88bb95ad714aa92d64dde68c881, type: 3}
+    _character: 1
+    _endWithAShrug: 1
+  - _text: What?
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 90a821c23915f564fa68ae6fa36d0f4b, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: "I\u2019m so silly sometimes."
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 4fdd88caee20de244a5fb10216c91818, type: 3}
+    _character: 1
+    _endWithAShrug: 0
+  - _text: Everyone has a flaw, right?
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: f6a1f2380eb6d9f46ad0b5cd337c5b55, type: 3}
+    _character: 1
+    _endWithAShrug: 1
+  - _text: What?
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 5dd39900c2f0872439922d11514781e9, type: 3}
+    _character: 0
+    _endWithAShrug: 0
+  - _text: Sorry, rat. I have to go.
+    _eventBefore: 0
+    _characterChanges:
+    - _character: 1
+      _characterPosition: 3
+      _await: 0
+    - _character: 0
+      _characterPosition: 2
+      _await: 0
+    - _character: 3
+      _characterPosition: 4
+      _await: 1
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 6b689db433a5b654fb6742445d00e6ea, type: 3}
+    _character: 1
+    _endWithAShrug: 1
+  - _text: This was fun!
+    _eventBefore: 0
+    _characterChanges: []
+    _delayBefore: 0.1
+    _delayAfter: 0.1
+    _clip: {fileID: 8300000, guid: 2a6cc47eb3b1ffd46971650d20712727, type: 3}
+    _character: 1
+    _endWithAShrug: 1
+  - _text: "\u2026What?"
+    _eventBefore: 0
+    _characterChanges:
+    - _character: 3
+      _characterPosition: 5
+      _await: 0
+    - _character: 1
+      _characterPosition: 5
+      _await: 1
+    _delayBefore: 0.1
+    _delayAfter: 1
+    _clip: {fileID: 8300000, guid: 3e8508f7dfda970498394241dab5f2b3, type: 3}
+    _character: 0
+    _endWithAShrug: 1
+  _delayAfter: 2

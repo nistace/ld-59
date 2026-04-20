@@ -136,6 +136,8 @@ namespace LD59.ExtractMoles.Cutscenes
                _canvasGroup.alpha = 1 - fadeProgress;
                await UniTask.NextFrame();
             }
+
+            await UniTask.WaitForSeconds( script.DelayAfter );
          }
 
          _canvasGroup.alpha = 0;

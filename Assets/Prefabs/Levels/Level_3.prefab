@@ -2639,6 +2639,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4375250048355914038, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
   m_PrefabInstance: {fileID: 2045868357578096523}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4600136476587285212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2572282912744023383, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
+  m_PrefabInstance: {fileID: 2045868357578096523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!1001 &2060546060373420200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5607,15 +5618,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 652599066500740030, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 652599066500740030, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 652599066500740030, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 652599066500740030, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5657,6 +5668,22 @@ PrefabInstance:
       propertyPath: _introScript
       value: 
       objectReference: {fileID: 11400000, guid: be458d1c14755a64fb6b59d77b8ec374, type: 2}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: _objectsToKeepWithNextLevel.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4600136476587285212}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7416935161678472632}
+    - target: {fileID: 2704277795677474063, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
+      propertyPath: '_objectsToKeepWithNextLevel.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1857471661411716982}
     - target: {fileID: 3960560804717966560, guid: e949e1f40661a8d4a9c0df562ea330b0, type: 3}
       propertyPath: m_Name
       value: Level_3
@@ -6654,6 +6681,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
+--- !u!114 &7416935161678472632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2572282912744023383, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
+  m_PrefabInstance: {fileID: 4998057245986586863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!4 &8783330069437927897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4375250048355914038, guid: 09b0b6647b947144ca56f89672365afe, type: 3}
@@ -10342,6 +10380,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
+--- !u!114 &1857471661411716982 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8174507047718621893, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}
+  m_PrefabInstance: {fileID: 7545427661330242995}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b85b9bb28649b28237ad9cd1681eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LD59.Levels.LevelFancySpawnable
 --- !u!4 &8047036637708643264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 511843917899216499, guid: 6d13db8ae09f3d249a762eeabac619c1, type: 3}

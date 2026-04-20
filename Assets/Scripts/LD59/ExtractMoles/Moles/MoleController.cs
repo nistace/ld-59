@@ -42,6 +42,8 @@ namespace LD59.ExtractMoles.Moles
 
       private void Update()
       {
+         if(transform.localScale.x < .9f) return;
+
          if(IsKnockedOut)
          {
             KnockedOutCooldown -= Time.deltaTime;

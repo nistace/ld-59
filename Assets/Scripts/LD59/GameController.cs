@@ -5,12 +5,14 @@ using LD59.ExtractMoles.PlayerControllers;
 using LD59.Levels;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LD59
 {
    public class GameController : MonoBehaviour
    {
       [SerializeField] private LevelManager _levelManager;
+      [SerializeField] private CutsceneScript _finalCutscene;
       [SerializeField] private CutsceneManager _cutsceneManager;
 
       private void Start()
@@ -119,7 +121,8 @@ namespace LD59
          }
          else
          {
-            // TODO Return to menu
+            await _cutsceneManager.PlayCutscene( _finalCutscene );
+            SceneManager.LoadScene( "Menu" );
          }
       }
 
